@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,57 +19,70 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-xl bg-black/60 text-white">
-      <div className="relative flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black/70 text-white shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Image
               src="/spetraluce-1.png"
               alt="Spetraluce Logo"
-              width={210}
-              height={100}
+              width={180}
+              height={80}
+              className="object-contain"
+              priority
             />
           </div>
         </Link>
 
-        {/* Desktop Nav - Centered */}
-        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-10 text-lg font-medium tracking-wide">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-10 font-medium tracking-wide">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="hover:text-yellow-400 transition duration-200"
+              className="relative group transition duration-200"
             >
-              {link.name}
+              <span className="hover:text-yellow-400 transition duration-300">
+                {link.name}
+              </span>
+              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-yellow-400 group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden z-50"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {mobileOpen && (
-        <div className="md:hidden bg-black/90 text-white p-6 space-y-5">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block text-xl font-medium"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-black/90 px-6 pt-4 pb-8 space-y-5"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="block text-lg font-medium hover:text-yellow-400 transition"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

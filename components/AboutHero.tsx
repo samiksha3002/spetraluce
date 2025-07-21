@@ -25,7 +25,7 @@ export default function AboutHero({
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-10" />
+      <div className="absolute inset-0 bg-black/10 z-10" />
 
       {/* Content */}
       <div className="relative z-20 text-center">

@@ -9,15 +9,11 @@ export default function About() {
   return (
     <main>
       <Header />
-      <AboutHero
-        title="Contact Us"
-        breadcrumb="Contact"
-        image="/contact-bg.jpg"
-      />
+      <AboutHero title="About Us" breadcrumb="About" image="/contact-bg.jpg" />
       <WelcomeSection
         title="Spetraluce makes your space illuminate life!"
         description="Spetraluce is a Italian based architectural lighting company that designs and manufactures premium lighting products. Our mission is to harness modern technology and old world craftsmanship to produce innovative lighting solutions for residential, commercial and hospitality spaces."
-        imageSrc="/welcome.jpg"
+        imageSrc="/pop3.jpg"
         features={[
           "Modern Lightings",
           "Innovation & Excellence",

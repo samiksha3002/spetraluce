@@ -10,8 +10,8 @@ export default function product() {
     <main>
       <Header />
       <AboutHero
-        title="Contact Us"
-        breadcrumb="Contact"
+        title="Our Products"
+        breadcrumb="Products"
         image="/contact-bg.jpg"
       />
       <ProductSection />

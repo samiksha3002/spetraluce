@@ -13,7 +13,7 @@ export default function contact() {
       <AboutHero
         title="Contact Us"
         breadcrumb="Contact"
-        image="/contact-bg.jpg"
+        image="/contactus.jpg"
       />
       <OfficesSection />
       <ContactFormSection />

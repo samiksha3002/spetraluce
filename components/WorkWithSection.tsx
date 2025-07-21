@@ -6,7 +6,7 @@ import Image from "next/image";
 const TABS = [
   {
     title: "LIGHT DESIGNER",
-    image: "/tab-light-designer.jpg", // Replace with your actual image path
+    image: "/Call1.jpg", // Replace with your actual image path
     content: `Are you working to design a new building and have you identified an interesting product on our catalogue or using the online configurator?
 
 Spetraluce has got a team of light artists with a strong propensity for new technologies.
@@ -17,14 +17,14 @@ In other words, this means that you can develop, together with our team of archi
   },
   {
     title: "LIGHT ENGINEER",
-    image: "/tab-light-engineer.jpg",
+    image: "/Call2.jpg",
     content: `We work closely with engineers to provide highly efficient lighting layouts with precise photometric results.
 
 Our team ensures every luminaire we suggest supports sustainable energy practices and installation feasibility.`,
   },
   {
     title: "ARCHITECTS",
-    image: "/tab-architects.jpg",
+    image: "/call3.jpg",
     content: `For architects, our LED solutions provide creative freedom with technical robustness. Our portfolio of minimal and expressive lighting empowers bold design visions to come alive.`,
   },
 ];

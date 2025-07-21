@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <main>
       <Header />
-      <AboutHero />
+      <AboutHero title="Our Services" breadcrumb="Services" image="/bond.jpg" />
       <ServicesSection />
       <ServiceHero />
       <WorkWithSection />

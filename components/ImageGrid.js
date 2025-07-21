@@ -2,32 +2,32 @@ import DirectionAwareHover from "./DirectionAwareHover";
 
 const data = [
   {
-    image: "/welcome.jpg",
+    image: "/Gallery1.jpg",
     title: "Louis Vuitton",
     location: "Paris, France",
   },
   {
-    image: "/welcome.jpg",
+    image: "/Gallery2.jpg",
     title: "Art Deco Bar",
     location: "Vienna, Austria",
   },
   {
-    image: "/welcome.jpg",
+    image: "/Gallery3.jpg",
     title: "Ceiling Lines",
     location: "Berlin, Germany",
   },
   {
-    image: "/welcome.jpg",
+    image: "/Gallery4.jpg",
     title: "Ceiling Lines",
     location: "Berlin, Germany",
   },
   {
-    image: "/welcome.jpg",
+    image: "/Gallery5.jpg",
     title: "Ceiling Lines",
     location: "Berlin, Germany",
   },
   {
-    image: "/welcome.jpg",
+    image: "/Gallery6.jpg",
     title: "Ceiling Lines",
     location: "Berlin, Germany",
   },

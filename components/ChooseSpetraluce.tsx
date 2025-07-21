@@ -21,37 +21,7 @@ export default function ChooseSpetraluce() {
   return (
     <section className="bg-[#181a1e] text-white py-20 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left: Image and overlay */}
-        <div className="relative w-full max-w-[500px] aspect-square mx-auto rounded-full overflow-hidden">
-          {/* Main image */}
-          <Image
-            src="/chandelier.jpg" // replace with your actual image path
-            alt="Chandelier"
-            fill
-            className="object-cover"
-          />
-
-          {/* Orange abstract overlay */}
-          <div className="absolute top-0 left-0 w-2/3 h-2/3 bg-orange-500 rounded-br-full z-10 opacity-90 mix-blend-multiply" />
-
-          {/* Play button */}
-          <div className="absolute bottom-8 right-8 z-20">
-            <button className="relative w-20 h-20 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-xl hover:scale-105 transition duration-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              {/* Outer glow */}
-              <span className="absolute w-full h-full rounded-full bg-yellow-500 opacity-30 blur-md scale-125 z-[-1]" />
-            </button>
-          </div>
-        </div>
-
-        {/* Right: Text content */}
+        {/* Left: Text content (moved up) */}
         <div>
           <h2 className="text-3xl md:text-5xl font-bold uppercase leading-tight">
             See Why You Should <br />
@@ -80,6 +50,34 @@ export default function ChooseSpetraluce() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Right: Image and overlay (moved down) */}
+        <div className="relative w-full max-w-[500px] aspect-square mx-auto rounded-full overflow-hidden">
+          {/* Main image */}
+          <Image
+            src="/world.jpg"
+            alt="Chandelier"
+            fill
+            className="object-cover"
+          />
+
+          {/* Orange abstract overlay */}
+
+          {/* Play button */}
+          <div className="absolute bottom-8 right-8 z-20">
+            <button className="relative w-20 h-20 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-xl hover:scale-105 transition duration-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <span className="absolute w-full h-full rounded-full bg-yellow-500 opacity-30 blur-md scale-125 z-[-1]" />
+            </button>
           </div>
         </div>
       </div>
