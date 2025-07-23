@@ -9,8 +9,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "NextGenWeb | Samiksha Portfolio",
-  description: "Next-level websites and digital services for global clients.",
+  title: "Spetraluce",
+  description: "Shaping the space with light",
 };
 
 export default function RootLayout({
