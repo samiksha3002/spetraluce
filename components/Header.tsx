@@ -69,7 +69,6 @@ export default function Header() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-black/90 px-6 pt-4 pb-8 space-y-5"
-            {...({} as any)} // ✅ <- safest workaround for TS typing
           >
             {navLinks.map((link) => (
               <Link

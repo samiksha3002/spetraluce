@@ -1,14 +1,15 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useRef, useEffect } from "react";
 
 export default function HeroSlider() {
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<any>(null);
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   const slides = [
     {
@@ -26,45 +27,46 @@ export default function HeroSlider() {
   ];
 
   useEffect(() => {
-    if (!swiperRef.current) return;
-
-    const swiper = swiperRef.current.swiper;
+    if (!swiperInstance) return;
 
     const handleSlideChange = () => {
-      const currentIndex = swiper.activeIndex;
+      const currentIndex = swiperInstance.realIndex;
       const currentSlide = slides[currentIndex];
 
       if (currentSlide.type === "video") {
-        swiper.autoplay.stop(); // stop auto-play
+        swiperInstance.autoplay.stop();
 
         const video = document.querySelector(
           `video[data-index="${currentIndex}"]`
-        );
+        ) as HTMLVideoElement | null;
+
         if (video) {
           video.currentTime = 0;
           video.play();
           video.onended = () => {
-            swiper.slideNext();
-            swiper.autoplay.start(); // resume autoplay
+            swiperInstance.slideNext();
+            swiperInstance.autoplay.start();
           };
         }
+      } else {
+        swiperInstance.autoplay.start();
       }
     };
 
-    swiper.on("slideChange", handleSlideChange);
+    swiperInstance.on("slideChangeTransitionEnd", handleSlideChange);
 
-    // Start autoplay again on first load if image
+    // Trigger for first slide
     handleSlideChange();
 
     return () => {
-      swiper.off("slideChange", handleSlideChange);
+      swiperInstance.off("slideChangeTransitionEnd", handleSlideChange);
     };
-  }, []);
+  }, [swiperInstance]);
 
   return (
     <section className="w-full h-screen relative">
       <Swiper
-        ref={swiperRef}
+        onSwiper={setSwiperInstance} // ✅ Get instance safely
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
