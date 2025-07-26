@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -69,6 +69,7 @@ export default function Header() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-black/90 px-6 pt-4 pb-8 space-y-5"
+            {...({} as HTMLMotionProps<"div">)} // ✅ Type fix for className prop
           >
             {navLinks.map((link) => (
               <Link
