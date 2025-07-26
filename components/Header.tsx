@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const MotionDiv = motion.div as React.FC<React.HTMLAttributes<HTMLDivElement>>;
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -63,7 +65,7 @@ export default function Header() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <MotionDiv
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -80,7 +82,7 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-          </motion.div>
+          </MotionDiv>
         )}
       </AnimatePresence>
     </header>
