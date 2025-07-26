@@ -50,7 +50,7 @@ export default function ProductSection() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
         {/* Sidebar */}
         <aside className="w-full md:w-1/4 border-r border-[#2a2a2a] pr-4 space-y-4">
-          <h3 className="text-[#ff6b00] font-semibold uppercase">
+          <h3 className="text-[#d6844a] font-semibold uppercase">
             Product Categories
           </h3>
           {sidebarItems.map((item, idx) => (
@@ -60,8 +60,8 @@ export default function ProductSection() {
               className={`uppercase text-sm tracking-wide cursor-pointer px-2 py-1 rounded 
                 ${
                   active === item
-                    ? "bg-[#ff6b00] text-black font-semibold"
-                    : "text-gray-300 hover:text-[#ff6b00]"
+                    ? "bg-[#e68c4c] text-black font-semibold"
+                    : "text-gray-300 hover:text-[#e79255]"
                 }`}
             >
               {item}

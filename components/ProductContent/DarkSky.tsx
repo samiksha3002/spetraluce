@@ -38,7 +38,7 @@ export default function DarkSky() {
             className="w-full h-48 object-cover"
           />
           <div className="p-4">
-            <h3 className="text-xl font-semibold text-orange-700">
+            <h3 className="text-xl font-semibold text-orange-300">
               Architectural Downlights
             </h3>
             <p className="text-gray-600 text-sm mt-2">

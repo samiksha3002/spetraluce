@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import AboutHero from "../../components/AboutHero";
 import WelcomeSection from "../../components/WelcomeSection";
 import Footer from "../../components/Footer";
+import AboutVision from "../../components/AboutVision";
 
 export default function About() {
   return (
@@ -21,7 +22,7 @@ export default function About() {
           "Domestic and Commercial",
         ]}
       />
-
+      <AboutVision />
       <AboutHero />
       <Footer />
     </main>
