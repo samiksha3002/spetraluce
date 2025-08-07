@@ -1,6 +1,6 @@
 "use client";
 
-export default function DarkSky() {
+export default function DarkSkyInfo() {
   return (
     <main className="min-h-screen bg-[#181a1e] text-white px-6 md:px-12 py-16 flex flex-col items-center justify-center">
       <h1 className="text-center text-orange-400 text-4xl md:text-5xl font-bold uppercase mb-4 tracking-wide">
@@ -45,7 +45,8 @@ export default function DarkSky() {
 
         <p>
           Uncontrolled artificial lighting has far-reaching consequences,
-          affecting <strong>wildlife, energy consumption, and human well-being</strong>.
+          affecting{" "}
+          <strong>wildlife, energy consumption, and human well-being</strong>.
         </p>
       </div>
     </main>

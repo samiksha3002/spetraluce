@@ -1,0 +1,13 @@
+[
+  {
+    "category": "VARIOPSU 24 V IP20 ON/OFF",
+    "title": "VarioPSU 24V/30W IP20",
+    "description": "1 channel LED driver from KGP Electronics GmbH with 24 V constant voltage and a maximum output power of 30 W. Type of protection IP20, class II power unit with an input voltage range of 220 – 240 V AC. Dimensions (L x W x H): 300 mm x 30 mm x 16 mm. Not dimmable. Product on secondary side dimmable with IN.finite™ controller range.",
+    "partNumber": "16000373-01",
+    "unit": "piece (pc)",
+    "minOQ": 5,
+    "image": "path-to-image.jpg",
+    "specSheet": "specsheet.pdf",
+    "datasheet": "datasheet.pdf"
+  }
+]
