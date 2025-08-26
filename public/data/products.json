@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Indoor Plant A",
+    "category": "Indoor",
+    "description": "Fresh indoor plant for home decor",
+    "price": 250,
+    "image": "https://via.placeholder.com/300x200"
+  },
+  {
+    "id": 2,
+    "name": "Outdoor Plant B",
+    "category": "Outdoor",
+    "description": "Perfect outdoor garden plant",
+    "price": 400,
+    "image": "https://via.placeholder.com/300x200"
+  },
+  {
+    "id": 3,
+    "name": "Gold Leaf Decor",
+    "category": "Gold",
+    "description": "Golden artificial decor leaf",
+    "price": 999,
+    "image": "https://via.placeholder.com/300x200"
+  }
+]

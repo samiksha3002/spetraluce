@@ -1,0 +1,87 @@
+[
+  {
+    "slug": "downlight-alpha",
+    "title": "Downlight Alpha",
+    "overview": "High efficiency indoor downlight designed for modern interiors.",
+    "image": "/products/downlight1.jpg",
+    "pdf": "/pdfs/downlight-alpha.pdf",
+
+    "technicalSpecs": {
+      "power": "15W",
+      "lumen": "1200lm",
+      "cct": "3000K",
+      "voltage": "220-240V",
+      "material": "Aluminum"
+    },
+
+    "applications": [
+      "Offices",
+      "Retail Stores",
+      "Residences",
+      "Hospitality"
+    ],
+
+    "certifications": [
+      "CE",
+      "RoHS",
+      "ISO9001"
+    ],
+
+    "tables": [
+      {
+        "title": "Performance Data",
+        "columns": ["Model", "Power", "Lumen", "CCT", "CRI"],
+        "rows": [
+          ["DL-ALPHA-15", "15W", "1200lm", "3000K", "80+"],
+          ["DL-ALPHA-20", "20W", "1600lm", "4000K", "80+"]
+        ]
+      },
+      {
+        "title": "Dimensions",
+        "columns": ["Model", "Cutout (mm)", "Diameter (mm)", "Height (mm)"],
+        "rows": [
+          ["DL-ALPHA-15", "100", "120", "60"],
+          ["DL-ALPHA-20", "120", "145", "70"]
+        ]
+      }
+    ]
+  },
+
+  {
+    "slug": "street-light-100w",
+    "title": "Street Light 100W",
+    "overview": "Durable and efficient outdoor lighting solution.",
+    "image": "/products/street1.jpg",
+    "pdf": "/pdfs/street-light-100w.pdf",
+
+    "technicalSpecs": {
+      "power": "100W",
+      "lumen": "9000lm",
+      "cct": "5700K",
+      "ipRating": "IP65",
+      "material": "Die-cast Aluminum"
+    },
+
+    "applications": [
+      "Roadways",
+      "Parking Lots",
+      "Industrial Areas"
+    ],
+
+    "certifications": [
+      "CE",
+      "RoHS",
+      "IK08"
+    ],
+
+    "tables": [
+      {
+        "title": "Performance Data",
+        "columns": ["Model", "Power", "Lumen", "CCT", "CRI"],
+        "rows": [
+          ["ST-100W", "100W", "9000lm", "5700K", "80+"]
+        ]
+      }
+    ]
+  }
+]

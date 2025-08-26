@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "category": "Indoor",
+    "subcategory": "Wall Light",
+    "name": "WLR3000",
+    "image": "/images/wlr3000.jpg",
+    "short": "Wall light for indoor installation ideal for the illumination of staircases, corridors, entrances.",
+    "specs": {
+      "Item No": "WLR3000",
+      "Power": "15 W",
+      "LED Type": "OSRAM SMD LED",
+      "Luminous flux": "300 lm/w",
+      "CCT": "2700 ~ 6500K",
+      "CRI": "80+",
+      "Beam angle": "30°",
+      "Dimension (mm)": "265x245x110",
+      "Cut out (mm)": "239x252x95",
+      "Life Time": "50,000Hrs",
+      "Adjustable": "No",
+      "Working Temp": "-20° ~ +50°"
+    },
+    "downloads": [
+      { "label": "Datasheet (PDF)", "url": "/files/WLR3000-datasheet.pdf" },
+      { "label": "Catalog Page", "url": "/files/WLR3000-catalog.pdf" }
+    ]
+  }
+]
+    

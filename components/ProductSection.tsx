@@ -1,141 +1,123 @@
 "use client";
 
-import { useState } from "react";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Import your dynamic content components
-import OutdoorLuminaires from "./ProductContent/OutdoorLuminaires";
-import IndoorLuminaires from "./ProductContent/IndoorLuminaires";
-import DarkSky from "./ProductContent/DarkSky";
-import FlexibleLightEngine from "./ProductContent/FlexibleLightEngine";
-import Accessories from "./ProductContent/Accessories";
-
-const sidebarItems = [
-  "Outdoor Luminaires",
-  "Indoor Luminaires",
-  "DarkSky",
-  "Smart Lighting & Controls",
-  "Flexible Light Engine",
-  "Mix & Match (DIY Luminaires)",
-  "Design Luminaires",
-  "Accessories",
-  "Products A-Z",
-  "Discontinued Products A-Z",
+const categories = [
+  {
+    name: "Indoor",
+    image: "/pop5.jpg",
+    slug: "indoor",
+    desc: "Elegant indoor lighting solutions to elevate interiors with style and innovation.",
+  },
+  {
+    name: "Outdoor",
+    image: "/pop2.jpg",
+    slug: "outdoor",
+    desc: "Durable outdoor lighting crafted for landscapes, facades, and open spaces.",
+  },
+  {
+    name: "Industrial",
+    image: "/industryi.jpg",
+    slug: "industrial",
+    desc: "Robust industrial lighting designed for factories, warehouses, and large-scale projects.",
+  },
 ];
 
-export default function ProductSection() {
-  const [active, setActive] = useState("Outdoor Luminaires");
-
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    mode: "free-snap",
-    slides: {
-      perView: "auto",
-      spacing: 16,
-    },
-    renderMode: "performance",
-  });
-
-  const renderContent = () => {
-    switch (active) {
-      case "Outdoor Luminaires":
-        return <OutdoorLuminaires />;
-      case "Indoor Luminaires":
-        return <IndoorLuminaires />;
-      case "Flexible Light Engine":
-        return <FlexibleLightEngine />;
-      case "DarkSky":
-        return <DarkSky />;
-      case "Accessories":
-        return <Accessories />;
-      default:
-        return (
-          <div className="text-gray-400 italic p-4">
-            No content available for this section.
-          </div>
-        );
-    }
-  };
-
+export default function AlternateCategories() {
   return (
-    <section className="bg-[#181a1e] text-white py-20 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto space-y-10">
-        {/* Navigation Arrows + Carousel */}
-        <div className="relative">
-          {/* Arrows */}
-          <button
-            onClick={() => instanceRef.current?.prev()}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 p-2 rounded-full z-10"
-          >
-            <ChevronLeft size={24} className="text-white" />
-          </button>
-          <button
-            onClick={() => instanceRef.current?.next()}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 p-2 rounded-full z-10"
-          >
-            <ChevronRight size={24} className="text-white" />
-          </button>
+    <section className="w-full bg-black text-white py-20 px-6 space-y-32">
+      {/* Section Heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl md:text-5xl font-bold text-center mb-12 tracking-wide"
+      >
+        Explore Our Categories
+      </motion.h1>
 
-          {/* Carousel Tabs */}
-          <div
-            ref={sliderRef}
-            className="keen-slider overflow-x-auto px-8 py-4 scrollbar-hide"
-          >
-            {sidebarItems.map((item, idx) => {
-              const isProductsAZ = item === "Products A-Z";
-              const isDiscontinuedAZ = item === "Discontinued Products A-Z";
+      {categories.map((cat, index) => (
+        <motion.div
+          key={cat.name}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className={`grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${
+            index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+          }`}
+        >
+          {/* Image with enhanced corner lines */}
+          <div className="relative w-full h-80 md:h-[400px]">
+            <motion.div
+              initial={{ scale: 1.2, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="relative z-10 w-full h-full rounded-xl overflow-hidden shadow-2xl border-2 border-orange-500"
+              style={{
+                backgroundImage: `url(${cat.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-500" />
+            </motion.div>
 
-              return (
-                <div
-                  key={idx}
-                  className="keen-slider__slide px-2"
-                  style={{ minWidth: "max-content" }}
-                >
-                  {isProductsAZ ? (
-                    <Link href="/products/A-Z" passHref>
-                      <button
-                        className="px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide border transition-all duration-300 whitespace-nowrap border-gray-600 text-gray-300 hover:border-orange-400 hover:text-orange-300"
-                        style={{ minWidth: "200px" }}
-                      >
-                        {item}
-                      </button>
-                    </Link>
-                  ) : isDiscontinuedAZ ? (
-                    <Link href="/Discountinued" passHref>
-                      <button
-                        className="px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide border transition-all duration-300 whitespace-nowrap border-gray-600 text-gray-300 hover:border-orange-400 hover:text-orange-300"
-                        style={{ minWidth: "200px" }}
-                      >
-                        {item}
-                      </button>
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => setActive(item)}
-                      className={`px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide border transition-all duration-300 whitespace-nowrap ${
-                        active === item
-                          ? "bg-orange-500 border-orange-400 text-black shadow-lg"
-                          : "border-gray-600 text-gray-300 hover:border-orange-400 hover:text-orange-300"
-                      }`}
-                      style={{ minWidth: "200px" }}
-                    >
-                      {item}
-                    </button>
-                  )}
-                </div>
-              );
-            })}
+            {/* Corner Lines */}
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              className="absolute top-0 left-0 h-[4px] bg-orange-500"
+            />
+            <motion.span
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="absolute top-0 left-0 w-[4px] bg-orange-500"
+            />
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              className="absolute bottom-0 right-0 h-[4px] bg-orange-500"
+            />
+            <motion.span
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="absolute bottom-0 right-0 w-[4px] bg-orange-500"
+            />
           </div>
-        </div>
 
-        {/* Dynamic Content Area */}
-        <div className="bg-[#1f2125] rounded-xl shadow-xl p-6 md:p-10 transition-all duration-300">
-          {renderContent()}
-        </div>
-      </div>
+          {/* Info Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-start space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-wide">
+              <span className="text-orange-500">{cat.name}</span>
+            </h2>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-md">
+              {cat.desc}
+            </p>
+            <Link
+              href={`/gold/${cat.slug}`} // 👈 redirect ho jayega correct page par
+              className="px-8 py-3 bg-orange-500 hover:bg-orange-600 transition-all rounded-full font-semibold shadow-md hover:shadow-orange-500/40 tracking-wide"
+            >
+              Explore {cat.name}
+            </Link>
+          </motion.div>
+        </motion.div>
+      ))}
     </section>
   );
 }

@@ -1,0 +1,26 @@
+{
+  "Indoor": [
+    "ALL",
+    "Spot Light",
+    "Magenatic System",
+    "Linear",
+    "Downlight",
+    "TrackLight",
+    "Wall Light",
+    "Ceiling Light",
+    "Pendant Light",
+    "Panel",
+    "Magnetic track Channel",
+    "Mirror Light"
+  ],
+  "Outdoor": [
+    "ALL",
+    "Flood Light",
+    "Street Light",
+    "Gate Light",
+    "Garden Spike",
+    "Wall Washer",
+    "Bollard Light",
+    "Underwater Light"
+  ]
+}

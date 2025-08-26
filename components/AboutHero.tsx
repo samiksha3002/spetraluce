@@ -19,9 +19,10 @@ export default function AboutHero({
       <Image
         src={image}
         alt={`${title} Background`}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
         className="absolute z-0"
+        priority
       />
 
       {/* Overlay */}

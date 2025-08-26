@@ -1,0 +1,63 @@
+[
+  {
+    "parent": "Indoor",
+    "subcategories": [
+      {
+        "name": "Downlight",
+        "products": [
+          {
+            "id": 1,
+            "name": "Downlight Alpha",
+            "slug": "downlight-alpha",
+            "image": "/pop2.jpg",
+            "desc": "High efficiency indoor downlight",
+            "specs": "15W, 1200lm, 3000K",
+            "pdf": "/pdfs/downlight-alpha.pdf"
+          },
+          {
+            "id": 2,
+            "name": "Downlight Beta",
+            "slug": "downlight-beta",
+            "image": "/pop5.jpg",
+            "desc": "Compact stylish design",
+            "specs": "12W, 900lm, 4000K",
+            "pdf": "/pdfs/downlight-beta.pdf"
+          }
+        ]
+      },
+      {
+        "name": "Ceiling Light",
+        "products": [
+          {
+            "id": 3,
+            "name": "Ceiling Pro",
+            "slug": "ceiling-pro",
+            "image": "/pop3.jpg",
+            "desc": "Modern ceiling light",
+            "specs": "24W, 2000lm, 3000K",
+            "pdf": "/pdfs/ceiling-pro.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "parent": "Outdoor",
+    "subcategories": [
+      {
+        "name": "Street Light",
+        "products": [
+          {
+            "id": 4,
+            "name": "Street Light 100W",
+            "slug": "street-light-100w",
+            "image": "/products/street1.jpg",
+            "desc": "Durable street lighting",
+            "specs": "100W, 9000lm, IP65",
+            "pdf": "/pdfs/street-light-100w.pdf"
+          }
+        ]
+      }
+    ]
+  }
+]
