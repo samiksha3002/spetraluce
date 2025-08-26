@@ -1,6 +1,6 @@
 "use client";
 
-import products from "/data/products.json";
+import products from "../public/data/products.json";
 
 interface ProductListProps {
   category: string;
