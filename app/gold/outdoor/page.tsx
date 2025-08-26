@@ -12,7 +12,13 @@ export default function OutdoorPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <AboutHero title="Outdoor" subtitle="Explore our outdoor cables" />
+
+      {/* Reusable AboutHero */}
+      <AboutHero
+        title="Outdoor"
+        breadcrumb="Outdoor Cables"
+        image="/images/outdoor.jpg" // make sure you have this in public/images
+      />
 
       <div className="flex flex-1 flex-col md:flex-row p-6 gap-6">
         <SidebarCable
