@@ -1,13 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
-
-// Explicitly tell TypeScript this is a header element
-const MotionHeader = motion.header as React.FC<HTMLMotionProps<HTMLElement>>;
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,8 +19,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      if (currentScroll > lastScrollY && currentScroll > 80) setVisible(false);
-      else setVisible(true);
+      setVisible(!(currentScroll > lastScrollY && currentScroll > 80));
       setLastScrollY(currentScroll);
     };
 
@@ -36,30 +28,28 @@ export default function Header() {
   }, [lastScrollY]);
 
   return (
-    <MotionHeader
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: visible ? 0 : -100 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-xl text-white border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link href="/">
+        <a href="/">
           <div className="flex items-center gap-3">
-            <Image
+            <img
               src="/spetraluce-1.png"
               alt="Spetraluce Logo"
               width={170}
               height={70}
               className="object-contain"
-              priority
             />
           </div>
-        </Link>
+        </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-10 font-semibold tracking-[0.12em] text-sm uppercase">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.name}
               href={link.href}
               className="relative group transition duration-200"
@@ -68,11 +58,10 @@ export default function Header() {
                 {link.name}
               </span>
               <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-orange-400 group-hover:w-full transition-all duration-300" />
-            </Link>
+            </a>
           ))}
         </nav>
 
-        {/* Mobile Menu */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden z-50"
@@ -98,18 +87,18 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link
+                <a
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="hover:text-orange-400 transition-colors text-2xl"
                 >
                   {link.name}
-                </Link>
+                </a>
               </motion.div>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </MotionHeader>
+    </motion.header>
   );
 }
