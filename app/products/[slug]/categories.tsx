@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 
 interface CategoriesProps {
   onSelectSubcategory: (subcategory: string) => void;
+  selectedSubcategory: string | null; // ✅ active state prop
 }
 
 interface Category {
@@ -14,10 +15,11 @@ interface Category {
   subcategories: string[];
 }
 
-export default function Categories({ onSelectSubcategory }: CategoriesProps) {
+export default function Categories({ onSelectSubcategory, selectedSubcategory }: CategoriesProps) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const params = useParams<{ slug: string }>(); // ✅ type-safe params
-  const slug = params?.slug?.toLowerCase?.() || ""; // ensure lowercase comparison
+  const [defaultSet, setDefaultSet] = useState(false); // ✅ to avoid multiple defaults
+  const params = useParams<{ slug: string }>();
+  const slug = params?.slug?.toLowerCase?.() || "";
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -42,20 +44,35 @@ export default function Categories({ onSelectSubcategory }: CategoriesProps) {
     fetchCategories();
   }, []);
 
-  // ✅ Find only the category matching the current slug
+  // ✅ Match current page slug
   const selectedCategory = categories.find((cat) => cat.name === slug);
+
+  // ✅ Auto-select first subcategory once
+  useEffect(() => {
+    if (
+      selectedCategory &&
+      selectedCategory.subcategories.length > 0 &&
+      !defaultSet
+    ) {
+      onSelectSubcategory(selectedCategory.subcategories[0]);
+      setDefaultSet(true);
+    }
+  }, [selectedCategory, defaultSet, onSelectSubcategory]);
 
   return (
     <div className="w-1/4 bg-black p-6 rounded-2xl shadow-xl h-screen overflow-y-auto border border-gray-800">
-    
-
       {selectedCategory ? (
         <ul className="space-y-3">
           {selectedCategory.subcategories.map((sub) => (
             <li
               key={sub}
               onClick={() => onSelectSubcategory(sub)}
-              className="cursor-pointer bg-gray-900 hover:bg-orange-600 text-orange-400 hover:text-white rounded-xl px-4 py-3 transition-all duration-300 shadow-md hover:shadow-lg"
+              className={`cursor-pointer rounded-xl px-4 py-3 transition-all duration-300 shadow-md hover:shadow-lg
+                ${
+                  selectedSubcategory === sub
+                    ? "bg-orange-600 text-white"
+                    : "bg-gray-900 text-orange-400 hover:bg-orange-600 hover:text-white"
+                }`}
             >
               {sub}
             </li>

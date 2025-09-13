@@ -21,7 +21,11 @@ export default function ProductCategoryPage() {
       {/* Main Content */}
       <div className="flex flex-1 gap-6 p-4">
         {/* Left Side: Categories */}
-        <Categories onSelectSubcategory={setSelectedSubcategory} />
+        <Categories 
+  onSelectSubcategory={setSelectedSubcategory} 
+  selectedSubcategory={selectedSubcategory} // ✅ pass active state
+/>
+
 
         {/* Right Side: Products */}
         <Products selectedSubcategory={selectedSubcategory} />

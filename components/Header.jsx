@@ -42,8 +42,8 @@ export default function Header() {
             <img
               src="/spetraluce-1.png"
               alt="Spetraluce Logo"
-              width={170}
-              height={80}
+              width={210}
+              height={130}
               className="object-contain"
             />
           </div>

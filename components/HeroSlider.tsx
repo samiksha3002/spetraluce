@@ -12,17 +12,18 @@ export default function HeroSlider() {
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   const slides = [
+
     {
       type: "video",
-      src: "/vispe.mp4",
+      src: "/heroo2.mp4",
     },
-    {
+     {
       type: "video",
       src: "/heroo1.mp4",
     },
     {
-      type: "image",
-      src: "/spetralu.png",
+      type: "video",
+      src: "/vispe.mp4",
     },
   ];
 
@@ -96,10 +97,10 @@ export default function HeroSlider() {
               <div className="absolute inset-0 z-20 flex items-center justify-center text-white text-center px-6">
                 <div>
                   <h1 className="text-4xl md:text-6xl font-light">
-                    Illuminate with Spetraluce
+           
                   </h1>
                   <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-                    Precision lighting, innovative design, Italian excellence.
+                   
                   </p>
                 </div>
               </div>

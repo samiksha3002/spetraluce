@@ -17,7 +17,7 @@ export default function About() {
       <AboutHero
         title="About Us"
         breadcrumb="About"
-        image="/contact-bg.jpg"
+        image="/aboutus1.jpg"
       />
 
       <WelcomeSection
