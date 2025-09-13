@@ -1,0 +1,9 @@
+<svg version="1.1" id="test2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 595.3 841.9" style="enable-background:new 0 0 595.3 841.9;" xml:space="preserve" data-llp-composed="true" class="lazy-line-painter">
+    <style type="text/css">
+	.st0{fill:none;stroke:#F58220;stroke-width:10;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#2CACE3;stroke-width:10;stroke-miterlimit:10;}
+    </style>
+    <path class="st0" d="M357,314.3l-105,82.3c0,0-15.3,15.5-7.2,40.7c0,0,4.7,18,26.6,26.6c0,0,14.8,6.6,38.3-12l28.2-21.6" data-llp-id="test2-0" data-llp-duration="500" data-llp-delay="0" fill-opacity="0" style="" data-llp-stroke-join=""/>
+    <path class="st0" d="M287.7,418.7l41-29.1c0,0,11.3-10.2,30.9-1.8c0,0,11.7,4.2,23.4,23.4c0,0,5.2,9.8,2.7,20.8&#10;&#9;c0,0-1.1,7.9-6.9,13.6l-31.5,26.5" data-llp-id="test2-1" data-llp-duration="500" data-llp-delay="500" fill-opacity="0" style="" data-llp-stroke-join=""/>
+    <polyline class="st1" points="206,437.3 275.6,528.6 334.9,482.9 " data-llp-id="test2-2" data-llp-duration="1000" data-llp-delay="1000" fill-opacity="0" style="" data-llp-stroke-join=""/>
+  </svg>

@@ -16,14 +16,14 @@ export default function AboutHero({
   return (
     <section className="relative w-full h-[300px] md:h-[400px] text-white flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <Image
-        src={image}
-        alt={`${title} Background`}
-        fill
-        style={{ objectFit: "cover" }}
-        className="absolute z-0"
-        priority
-      />
+   <Image
+  src={image}
+  alt={`${title} Background`}
+  width={1920}   // apna required width
+  height={1000}   // apna required height
+  className="absolute z-0 w-full h-[300px] md:h-[400px] object-cover"
+  priority
+/>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/10 z-10" />

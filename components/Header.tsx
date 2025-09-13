@@ -1,22 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import {
-  motion,
-  AnimatePresence,
-  HTMLMotionProps,
-  MotionProps,
-} from "framer-motion";
-
-const MotionDiv = motion.div as React.FC<
-  React.HTMLAttributes<HTMLDivElement> & MotionProps
->;
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -27,35 +20,53 @@ export default function Header() {
     { name: "Contact Us", href: "/contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > lastScrollY && currentScroll > 80) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(currentScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black/70 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: visible ? 0 : -100 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-xl text-white border-b border-white/10"
+    >
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/">
-          <div className="flex items-center gap-3">
+        <Link href="/" passHref>
+          <a className="flex items-center gap-3">
             <Image
               src="/spetraluce-1.png"
               alt="Spetraluce Logo"
-              width={180}
-              height={80}
+              width={170}
+              height={70}
               className="object-contain"
               priority
             />
-          </div>
+          </a>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-10 font-medium tracking-wide">
+        <nav className="hidden md:flex gap-10 font-semibold tracking-[0.12em] text-sm uppercase">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="relative group transition duration-200"
-            >
-              <span className="hover:text-yellow-400 transition duration-300">
-                {link.name}
-              </span>
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-yellow-400 group-hover:w-full transition-all duration-300" />
+            <Link key={link.name} href={link.href} passHref>
+              <a className="relative group transition duration-200">
+                <span className="hover:text-orange-400 transition-colors duration-300">
+                  {link.name}
+                </span>
+                <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-orange-400 group-hover:w-full transition-all duration-300" />
+              </a>
             </Link>
           ))}
         </nav>
@@ -64,34 +75,42 @@ export default function Header() {
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden z-50"
+          aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <MotionDiv
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/90 px-6 pt-4 pb-8 space-y-5"
+            className="fixed inset-0 bg-black/95 flex flex-col items-center justify-center space-y-8 text-lg font-semibold uppercase"
           >
-            {navLinks.map((link) => (
-              <Link
+            {navLinks.map((link, index) => (
+              <motion.div
                 key={link.name}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block text-lg font-medium hover:text-yellow-400 transition"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
-                {link.name}
-              </Link>
+                <Link href={link.href} passHref>
+                  <a
+                    onClick={() => setMobileOpen(false)}
+                    className="hover:text-orange-400 transition-colors text-2xl"
+                  >
+                    {link.name}
+                  </a>
+                </Link>
+              </motion.div>
             ))}
-          </MotionDiv>
+          </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

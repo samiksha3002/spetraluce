@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "keen-slider/keen-slider.min.css";
-
+import ClientWrapper from "../components/ClientWrapper"; // new client wrapper
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className + " bg-black text-white"}>
-        {children}
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );

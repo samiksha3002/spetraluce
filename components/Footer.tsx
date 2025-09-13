@@ -6,91 +6,104 @@ import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#101114] text-gray-300 pt-16 pb-6 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 border-b border-gray-700 pb-10">
-        {/* Logo & Tagline */}
-        <div>
+    <footer className="bg-black text-gray-300 px-6 pt-20 pb-8">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12 border-b border-gray-800 pb-12">
+        
+        {/* Left - Logo & Tagline */}
+        <div className="flex flex-col items-start">
           <Image
-            src="/spetraluce-1.png" // Replace with your logo path
+            src="/spetraluce-1.png"
             alt="Spetraluce Logo"
-            width={180}
-            height={80}
-            className="mb-4"
+            width={200}
+            height={90}
+            className="mb-6"
           />
-          <p className="text-sm">
-            Shaping spaces with light — premium architectural lighting for
-            modern living.
+          <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
+            Shaping spaces with light — premium architectural lighting for modern living.
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-white font-semibold text-lg mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link href="/" className="hover:text-yellow-400">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/products" className="hover:text-yellow-400">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-yellow-400">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-yellow-400">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-yellow-400">
-                Contact
-              </Link>
-            </li>
-          </ul>
+        {/* Center - Quick Links + Services */}
+        <div className="grid grid-cols-2 gap-8">
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-5 uppercase tracking-wide">
+              Quick Links
+            </h3>
+            <ul className="space-y-3 text-sm">
+              {[
+                { name: "Home", href: "/" },
+                { name: "Products", href: "/products" },
+                { name: "About Us", href: "/about" },
+                { name: "Services", href: "/services" },
+                { name: "Contact", href: "/contact" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-orange-500 transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-5 uppercase tracking-wide">
+              Services
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#" className="hover:text-orange-500">Custom Lighting</a></li>
+              <li><a href="#" className="hover:text-orange-500">Architectural Design</a></li>
+              <li><a href="#" className="hover:text-orange-500">Smart Automation</a></li>
+              <li><a href="#" className="hover:text-orange-500">Consultation</a></li>
+            </ul>
+          </div>
         </div>
 
-        {/* Contact Info */}
+        {/* Right - Contact Info + Social */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-4">Contact Us</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2">
-              <Phone size={16} className="text-yellow-400" />
+          <h3 className="text-white font-semibold text-lg mb-5 uppercase tracking-wide">
+            Contact
+          </h3>
+          <ul className="space-y-4 text-sm mb-6">
+            <li className="flex items-center gap-3">
+              <Phone size={16} className="text-orange-500" />
               +91 98765 43210
             </li>
-            <li className="flex items-center gap-2">
-              <Mail size={16} className="text-yellow-400" />
+            <li className="flex items-center gap-3">
+              <Mail size={16} className="text-orange-500" />
               info@spetraluce.com
             </li>
-            <li className="flex items-center gap-2">
-              <MapPin size={16} className="text-yellow-400" />
+            <li className="flex items-center gap-3">
+              <MapPin size={16} className="text-orange-500" />
               Mumbai, India
             </li>
           </ul>
-        </div>
 
-        {/* Social Media */}
-        <div>
-          <h3 className="text-white font-semibold text-lg mb-4">Follow Us</h3>
+          {/* Social */}
           <div className="flex gap-4">
-            <a href="#" className="hover:text-yellow-400">
-              <Facebook size={20} />
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <Instagram size={20} />
-            </a>
+            {[
+              { icon: <Facebook size={18} />, href: "#" },
+              { icon: <Instagram size={18} />, href: "#" },
+            ].map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-orange-500 hover:text-orange-500 transition-colors duration-300"
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom copyright */}
-      <div className="text-center text-sm text-gray-500 pt-6">
-        &copy; {new Date().getFullYear()} Spetraluce. All Rights Reserved.
+      {/* Bottom */}
+      <div className="text-center text-xs md:text-sm text-gray-500 pt-6">
+        &copy; {new Date().getFullYear()}{" "}
+        <span className="text-white font-medium">Spetraluce</span>. All Rights Reserved.
       </div>
     </footer>
   );

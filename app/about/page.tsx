@@ -6,9 +6,11 @@ import WelcomeSection from "../../components/WelcomeSection";
 import Footer from "../../components/Footer";
 import AboutVision from "../../components/AboutVision";
 
+
 export default function About() {
   return (
     <main>
+      
       <Header />
       <AboutHero title="About Us" breadcrumb="About" image="/contact-bg.jpg" />
       <WelcomeSection

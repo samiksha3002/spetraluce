@@ -1,0 +1,52 @@
+[
+  {
+    "id": "APL170I",
+    "firstIndex": 9,
+    "duplicateIndex": 10
+  },
+  {
+    "id": "PLL112I",
+    "firstIndex": 14,
+    "duplicateIndex": 25
+  },
+  {
+    "id": "SLRC502I",
+    "firstIndex": 18,
+    "duplicateIndex": 32
+  },
+  {
+    "id": "MIR203I",
+    "firstIndex": 31,
+    "duplicateIndex": 70
+  },
+  {
+    "id": "DLRC176I",
+    "firstIndex": 49,
+    "duplicateIndex": 80
+  },
+  {
+    "id": "SLRC210I",
+    "firstIndex": 50,
+    "duplicateIndex": 85
+  },
+  {
+    "id": "SLRC502I",
+    "firstIndex": 18,
+    "duplicateIndex": 101
+  },
+  {
+    "id": "SLRC502I",
+    "firstIndex": 18,
+    "duplicateIndex": 102
+  },
+  {
+    "id": "SLRC598I",
+    "firstIndex": 51,
+    "duplicateIndex": 113
+  },
+  {
+    "id": "SLRC688I",
+    "firstIndex": 52,
+    "duplicateIndex": 122
+  }
+]

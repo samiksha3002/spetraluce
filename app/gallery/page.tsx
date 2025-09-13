@@ -9,7 +9,7 @@ export default function GalleryPage() {
   return (
     <main>
       <Header />
-      <AboutHero title="Gallery" breadcrumb="Gallery" image="/contactus.jpg" />
+      <AboutHero title="Gallery" breadcrumb="Gallery" image="/Gall1.jpg" />
       <ImageGrid />
       <Footer />
     </main>

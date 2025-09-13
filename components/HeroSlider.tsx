@@ -14,11 +14,11 @@ export default function HeroSlider() {
   const slides = [
     {
       type: "video",
-      src: "/vhome.mp4",
+      src: "/vispe.mp4",
     },
     {
-      type: "image",
-      src: "/home1.jpg",
+      type: "video",
+      src: "/heroo1.mp4",
     },
     {
       type: "image",
