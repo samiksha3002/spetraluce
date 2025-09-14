@@ -6,8 +6,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { useParams } from "next/navigation";
 
 interface CategoriesProps {
-  onSelectSubcategory: (subcategory: string) => void;
-  selectedSubcategory: string | null; // ✅ active state prop
+  onSelectSubcategory: (subcategory: string | null) => void;
+  selectedSubcategory: string | null;
 }
 
 interface Category {
@@ -15,9 +15,12 @@ interface Category {
   subcategories: string[];
 }
 
-export default function Categories({ onSelectSubcategory, selectedSubcategory }: CategoriesProps) {
+export default function Categories({
+  onSelectSubcategory,
+  selectedSubcategory,
+}: CategoriesProps) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [defaultSet, setDefaultSet] = useState(false); // ✅ to avoid multiple defaults
+  const [defaultSet, setDefaultSet] = useState(false);
   const params = useParams<{ slug: string }>();
   const slug = params?.slug?.toLowerCase?.() || "";
 
@@ -44,17 +47,12 @@ export default function Categories({ onSelectSubcategory, selectedSubcategory }:
     fetchCategories();
   }, []);
 
-  // ✅ Match current page slug
   const selectedCategory = categories.find((cat) => cat.name === slug);
 
-  // ✅ Auto-select first subcategory once
+  // ✅ Auto-select "All" by default
   useEffect(() => {
-    if (
-      selectedCategory &&
-      selectedCategory.subcategories.length > 0 &&
-      !defaultSet
-    ) {
-      onSelectSubcategory(selectedCategory.subcategories[0]);
+    if (selectedCategory && !defaultSet) {
+      onSelectSubcategory("All");
       setDefaultSet(true);
     }
   }, [selectedCategory, defaultSet, onSelectSubcategory]);
@@ -63,6 +61,21 @@ export default function Categories({ onSelectSubcategory, selectedSubcategory }:
     <div className="w-1/4 bg-black p-6 rounded-2xl shadow-xl h-screen overflow-y-auto border border-gray-800">
       {selectedCategory ? (
         <ul className="space-y-3">
+          {/* ✅ "All" Button */}
+          <li
+            key="all"
+            onClick={() => onSelectSubcategory("All")}
+            className={`cursor-pointer rounded-xl px-4 py-3 transition-all duration-300 shadow-md hover:shadow-lg
+              ${
+                selectedSubcategory === "All"
+                  ? "bg-orange-600 text-white"
+                  : "bg-gray-900 text-orange-400 hover:bg-orange-600 hover:text-white"
+              }`}
+          >
+            All
+          </li>
+
+          {/* ✅ Other subcategories */}
           {selectedCategory.subcategories.map((sub) => (
             <li
               key={sub}

@@ -1,70 +1,69 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
-const VisionMission = () => {
+const sections = [
+  {
+    title: "VISION",
+    content:
+      "We are the innovative market leader for linear light. Our tailor-made lighting solutions from our own manufacture enrich outstanding projects worldwide. Our values lead the way."
+  },
+  {
+    title: "MISSION",
+    content:
+      "We speak light. With curiosity, willingness to change and passion, our innovative technology enables ground breaking new design ideas, building bridges between architectural design elegance and technical implementation. Designed - Engineered - Made in Germany."
+  },
+  {
+    title: "OUR PURPOSE",
+    content:
+      "Our love for light inspires our actions. Our employees are at the heart of it all: expertise and passion are part of our DNA. Sustainability, mutual growth, and highest quality drive our future. Honest dialogue with our partners leads to continuous improvement and value for all stakeholders."
+  }
+];
+
+export default function VisionMissionElegant() {
   return (
-    <div className="min-h-screen flex bg-black text-white font-sans">
-      {/* Left Content */}
-      <div className="w-full lg:w-1/2 px-8 lg:px-20 py-16 space-y-20">
-        <section>
-          <h2 className="text-4xl font-bold text-[#ffaa00] tracking-widest mb-4">
-            VISION
-          </h2>
-          <p className="text-lg text-gray-300 leading-relaxed">
-            We are the innovative market leader for linear light. Our
-            tailor-made lighting solutions from our own manufacture enrich
-            outstanding projects worldwide. Our values lead the way.
-          </p>
-        </section>
+    <div className="min-h-screen flex bg-black text-gray-100 font-sans overflow-hidden">
+      {/* Left Section */}
+      <div className="w-full lg:w-1/2 px-8 lg:px-20 py-16 flex flex-col justify-center space-y-32 z-10 relative">
+        {sections.map((sec, idx) => (
+          <motion.section
+            key={idx}
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: idx * 0.3 }}
+            className="relative"
+          >
+            {/* Heading */}
+            <h2 className="text-5xl lg:text-6xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffaa00] to-[#ffd966] uppercase tracking-widest mb-6">
+              {sec.title}
+            </h2>
 
-        <section>
-          <h2 className="text-4xl font-bold text-[#ffaa00] tracking-widest mb-4">
-            MISSION
-          </h2>
-          <p className="text-lg text-gray-300 leading-relaxed">
-            We speak light. With curiosity, willingness to change and passion,
-            our innovative technology enables ground breaking new design ideas
-            building bridges between architectural design elegance and actual
-            technical implementation. Designed - Engineered - Made in Germany.
-            Together with our partners, we push the boundaries of the design
-            limitations, act sustainably and live up to our ethical and social
-            responsibility.
-          </p>
-        </section>
+            {/* Decorative Line */}
+            <div className="w-28 h-[3px] rounded-full bg-gradient-to-r from-[#ffaa00] to-transparent mb-6"></div>
 
-        <section>
-          <h2 className="text-4xl font-bold text-[#ffaa00] tracking-widest mb-4">
-            OUR PURPOSE
-          </h2>
-          <p className="text-lg text-gray-300 leading-relaxed">
-            Our love for light inspires our actions. Our employees are at the
-            heart of it all: expertise and passion are part of our DNA. The
-            combination of sustainability, mutual growth and the highest quality
-            is the impetus for our future. Open an honest dialog with our
-            partners will lead to continuous improvements and value brought to
-            all our stakeholders and projects.
-          </p>
-        </section>
+            {/* Paragraph */}
+            <p className="text-lg lg:text-xl leading-relaxed lg:leading-loose text-gray-200">
+              {sec.content}
+            </p>
+
+            {/* Optional small accent glow */}
+            <div className="absolute -top-4 -left-4 w-4 h-4 bg-[#ffaa00] rounded-full blur-lg opacity-30"></div>
+          </motion.section>
+        ))}
       </div>
 
-      {/* Right Side Image or Animation */}
+      {/* Right Section Video */}
       <div className="hidden lg:block w-1/2 relative">
-        <img
-          src="/dna-animation.png" // Replace with the actual path to your image
-          alt="DNA Animation"
+        <video
+          src="/your-video.mp4" // Replace with your video path
+          autoPlay
+          loop
+          muted
           className="w-full h-full object-cover"
         />
-        {/* Optional right-side vertical menu */}
-        <div className="absolute top-20 right-5 space-y-6 text-sm font-medium tracking-wide">
-          <p className="text-[#ffaa00]">Vision & Mission</p>
-          <p className="text-gray-400">Who we are</p>
-          <p className="text-gray-400">Other topics</p>
-          <div className="w-[2px] h-24 bg-[#ffaa00] ml-2"></div>
-        </div>
       </div>
     </div>
   );
-};
-
-export default VisionMission;
+}

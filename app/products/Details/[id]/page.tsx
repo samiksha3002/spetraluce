@@ -93,18 +93,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 alt={product.name}
                 className="w-full rounded-xl border border-gray-700 object-cover bg-white"
               />
-              {/* Overlay download button (only when datasheet exists) */}
-              {product.datasheet && (
-                <a
-                  href={product.datasheet}
-                  download
-                  className="absolute -bottom-4 left-4 inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-black font-bold px-5 py-3 rounded-lg shadow-md transition"
-                >
-                  <Download className="w-5 h-5" />
-                  {fileLabel}
-                  <span className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-black/10 skew-x-[-12deg] rounded-r-lg" />
-                </a>
-              )}
             </div>
           )}
 
@@ -147,7 +135,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             {renderTable("Electrical Data", product.electricalData)}
             {renderTable("Options", product.options)}
 
-            {/* Accessories (always show list, "/" if empty) */}
+            {/* Accessories */}
             <h2 className="text-lg font-bold text-black mb-2 bg-white px-3 py-1 rounded-t">
               Accessories
             </h2>
@@ -163,26 +151,45 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           </section>
         )}
 
-        {activeTab === "downloads" && (
-          <section className="space-y-6">
-            {/* Big card button like your screenshot */}
-            {product.datasheet ? (
-              <a
-                href={product.datasheet}
-                download
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-black font-bold px-6 py-4 rounded-lg transition shadow-md"
-              >
-                <Download className="w-5 h-5" />
-                {fileLabel}
-                <span className="pointer-events-none relative -mr-3 h-10 w-8 bg-black/10 skew-x-[-12deg] rounded-r-lg" />
-              </a>
-            ) : (
-              <p className="text-gray-400">No downloads available.</p>
-            )}
+      {activeTab === "downloads" && (
+  <section className="relative flex flex-col items-center justify-center py-16 rounded-2xl overflow-hidden">
+    {/* Background SVG Pattern */}
+    <svg
+      className="absolute inset-0 w-full h-full opacity-20"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      viewBox="0 0 800 800"
+    >
+      <circle cx="400" cy="400" r="300" fill="none" stroke="url(#grad)" strokeWidth="2" />
+      <circle cx="400" cy="400" r="200" fill="none" stroke="url(#grad)" strokeWidth="2" />
+      <circle cx="400" cy="400" r="100" fill="none" stroke="url(#grad)" strokeWidth="2" />
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#facc15" />
+        </linearGradient>
+      </defs>
+    </svg>
 
-            {/* Also keep the overlay button on the image (already shown above) */}
-          </section>
-        )}
+    {/* Foreground content */}
+    <div className="relative z-10 text-center">
+      <h2 className="text-2xl font-bold text-white mb-6">Download Product Datasheet</h2>
+      <a
+        href={product.datasheet || "#"}
+        download={!!product.datasheet}
+        className="group inline-flex items-center gap-3 px-8 py-4 
+                   bg-gradient-to-r from-orange-500 to-yellow-400 
+                   text-black font-bold text-lg rounded-2xl shadow-xl
+                   hover:from-orange-600 hover:to-yellow-500 
+                   transition-all duration-300"
+      >
+        <Download className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+        Download
+      </a>
+    </div>
+  </section>
+)}
+
       </main>
 
       {/* FOOTER */}

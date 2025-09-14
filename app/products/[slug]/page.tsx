@@ -6,9 +6,14 @@ import Products from "./products";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AboutHero from "../../../components/AboutHero";
+import { useParams } from "next/navigation";
 
 export default function ProductCategoryPage() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+
+  // ✅ Get current main category from URL (indoor, outdoor, industrial)
+  const params = useParams<{ slug: string }>();
+  const slug = params?.slug?.toLowerCase?.() || "";
 
   return (
     <div className="bg--100 min-h-screen flex flex-col">
@@ -21,14 +26,16 @@ export default function ProductCategoryPage() {
       {/* Main Content */}
       <div className="flex flex-1 gap-6 p-4">
         {/* Left Side: Categories */}
-        <Categories 
-  onSelectSubcategory={setSelectedSubcategory} 
-  selectedSubcategory={selectedSubcategory} // ✅ pass active state
-/>
-
+        <Categories
+          onSelectSubcategory={setSelectedSubcategory}
+          selectedSubcategory={selectedSubcategory}
+        />
 
         {/* Right Side: Products */}
-        <Products selectedSubcategory={selectedSubcategory} />
+        <Products
+          selectedSubcategory={selectedSubcategory}
+          parentCategory={slug} // ✅ FIX: prop name must match Products.tsx
+        />
       </div>
 
       {/* Footer */}
